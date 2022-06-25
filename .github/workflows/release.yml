@@ -1,0 +1,22 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - v*.*.*
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: 121.199.55.118
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /web/code/vite-project
+            sudo sh ./scripts/deploy.sh
