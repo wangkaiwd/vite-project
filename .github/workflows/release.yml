@@ -2,7 +2,6 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
     tags:
       - v*.*.*
 
@@ -19,4 +18,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /web/code/vite-project
-            sudo sh ./scripts/deploy.sh
+            sudo sh ./scripts/deploy.sh ${{github.ref_name}}
