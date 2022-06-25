@@ -1,6 +1,6 @@
 # $1:tag
-git checkout $1
 git pull
+git checkout $1
 npm i
 npm run build
 
